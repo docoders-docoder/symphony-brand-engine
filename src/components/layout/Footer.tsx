@@ -31,10 +31,17 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-display font-bold text-lg">N</span>
+              <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
+                <span className="text-primary-foreground font-display font-bold text-lg inline-flex items-center">
+  <img
+    src="/logo.png"
+    alt="Logo"
+    className="h-6 w-auto"
+  />
+</span>
+
               </div>
-              <span className="font-display font-bold text-xl">NexaServe</span>
+              <span className="font-display font-bold text-xl">SunridgeSolutions</span>
             </Link>
             <p className="text-primary-foreground/70 max-w-sm">
               Your trusted partner for digital transformation and healthcare operational excellence. We deliver solutions that drive measurable results.

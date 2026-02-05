@@ -1,185 +1,108 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import ServiceCard from "./ServiceCard";
 import { 
   Globe, 
   Search, 
   Package, 
-  Calendar, 
-  Receipt, 
-  BadgeCheck, 
-  FileCode, 
+  UserCheck, 
+  FileText, 
+  Shield, 
+  Code2, 
   TrendingUp, 
-  Workflow,
+  Settings2, 
   ArrowRight
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
-const businessServices = [
+const services = [
   {
-    icon: Globe,
-    title: "Website Development",
-    description: "Custom, conversion-optimized websites built with modern technology stacks",
-    href: "/services/website-development",
-    color: "business",
-  },
-  {
-    icon: Search,
-    title: "SEO",
-    description: "Data-driven strategies to dominate search rankings and drive organic growth",
-    href: "/services/seo",
-    color: "business",
-  },
-  {
-    icon: Package,
-    title: "Inventory Management",
-    description: "Smart inventory solutions that reduce costs and streamline operations",
-    href: "/services/inventory-management",
-    color: "business",
-  },
-];
-
-const healthcareServices = [
-  {
-    icon: Calendar,
+    icon: UserCheck,
     title: "Front Desk Operations",
-    description: "Efficient patient scheduling, registration, and front office management",
-    href: "/services/front-desk-operations",
-    color: "healthcare",
+    description: "Professional front desk management ensuring seamless patient scheduling and communication.",
+    category: "healthcare" as const,
   },
   {
-    icon: Receipt,
+    icon: FileText,
     title: "Medical Billing",
-    description: "Maximize reimbursements and minimize claim denials with expert billing",
-    href: "/services/medical-billing",
-    color: "healthcare",
+    description: "Accurate medical billing services with fast claim processing and maximum reimbursement.",
+    category: "healthcare" as const,
   },
   {
-    icon: BadgeCheck,
-    title: "Credentialing",
-    description: "Fast-track provider enrollment with payers and healthcare networks",
-    href: "/services/credentialing",
-    color: "healthcare",
+    icon: Shield,
+    title: "Dental Billing",
+    description: "End-to-end credentialing services ensuring compliance and faster payer enrollments.",
+    category: "healthcare" as const,
   },
   {
-    icon: FileCode,
+    icon: Code2,
     title: "Medical Coding",
-    description: "Accurate ICD-10, CPT, and HCPCS coding for optimal revenue capture",
-    href: "/services/medical-coding",
-    color: "healthcare",
+    description: "Certified coders delivering accurate ICD-10, CPT, and HCPCS coding for optimal revenue.",
+    category: "healthcare" as const,
   },
   {
     icon: TrendingUp,
     title: "A/R Recovery",
-    description: "Aggressive follow-up strategies to recover aged accounts receivable",
-    href: "/services/ar-recovery",
-    color: "healthcare",
+    description: "Aggressive accounts receivable recovery strategies to minimize aging and maximize collections.",
+    category: "healthcare" as const,
   },
   {
-    icon: Workflow,
+    icon: Settings2,
     title: "Revenue Cycle Management",
-    description: "End-to-end financial optimization from patient intake to payment",
-    href: "/services/rcm",
-    color: "healthcare",
+    description: "Complete RCM solutions optimizing every step from patient intake to final payment.",
+    category: "healthcare" as const,
   },
 ];
 
-type TabType = "business" | "healthcare";
-
-export function ServicesSection() {
-  const [activeTab, setActiveTab] = useState<TabType>("business");
-  const services = activeTab === "business" ? businessServices : healthcareServices;
-
+export const ServicesSection = () => {
   return (
-    <section className="section-padding bg-background">
+    <section id="services" className="py-24 bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
-            Our Services
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Solutions That <span className="text-gradient">Scale With You</span>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="relative inline-block mb-4">
+            <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-purple-500/20 blur-xl rounded-full" />
+            <span className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-accent/10 to-purple-500/10 text-accent text-sm font-semibold border border-accent/20">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              Our Services
+            </span>
+          </div>
+          
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            Comprehensive Solutions for
+            <span className="relative inline-block ml-3">
+              Every Need
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-500 rounded-full" />
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            From digital innovation to healthcare excellence, we deliver specialized services 
-            tailored to your industry's unique challenges.
+          
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            From digital transformation to healthcare operations, we deliver 
+            end-to-end solutions tailored to your business goals.
           </p>
         </div>
 
-        {/* Tab Switcher */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1 rounded-lg bg-muted">
-            <button
-              onClick={() => setActiveTab("business")}
-              className={cn(
-                "px-6 py-3 rounded-md text-sm font-semibold transition-all duration-200",
-                activeTab === "business"
-                  ? "bg-business text-business-foreground shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Business Solutions
-            </button>
-            <button
-              onClick={() => setActiveTab("healthcare")}
-              className={cn(
-                "px-6 py-3 rounded-md text-sm font-semibold transition-all duration-200",
-                activeTab === "healthcare"
-                  ? "bg-healthcare text-healthcare-foreground shadow-md"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Healthcare Solutions
-            </button>
-          </div>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* Services Grid with Staggered Animation */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Link
-              key={service.title}
-              to={service.href}
-              className="group bg-card rounded-xl p-6 border border-border card-hover animate-scale-in"
-              style={{ animationDelay: `${index * 50}ms` }}
+            <div 
+              key={index}
+              className="transform transition-all duration-500 hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className={cn(
-                "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
-                service.color === "business" ? "bg-business/10" : "bg-healthcare/10"
-              )}>
-                <service.icon className={cn(
-                  "h-6 w-6",
-                  service.color === "business" ? "text-business" : "text-healthcare"
-                )} />
-              </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                {service.description}
-              </p>
-              <div className={cn(
-                "inline-flex items-center text-sm font-semibold transition-colors",
-                service.color === "business" ? "text-business group-hover:text-business/80" : "text-healthcare group-hover:text-healthcare/80"
-              )}>
-                Learn More
-                <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+              <ServiceCard {...service} />
+            </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <Button variant="accent" size="lg" asChild>
-            <Link to="/services">
+        {/* Optional: View All Button */}
+        <div className="text-center mt-16">
+          <button className="group relative px-8 py-3.5 rounded-xl bg-gradient-to-r from-accent to-purple-600 text-white font-semibold overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <span className="relative flex items-center gap-3">
               View All Services
-              <ArrowRight className="h-4 w-4 ml-1" />
-            </Link>
-          </Button>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+            </span>
+          </button>
         </div>
       </div>
     </section>
   );
-}
+};

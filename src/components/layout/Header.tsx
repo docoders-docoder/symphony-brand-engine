@@ -35,10 +35,17 @@ export function Header() {
       <nav className="container-wide flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">N</span>
+          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
+           <span className="text-primary-foreground font-display font-bold text-lg inline-flex items-center">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="h-6 w-auto"
+            />
+          </span>
+
           </div>
-          <span className="font-display font-bold text-xl text-foreground">NexaServe</span>
+          <span className="font-display font-bold text-xl text-foreground">SunridgeSolutions</span>
         </Link>
 
         {/* Desktop Navigation */}

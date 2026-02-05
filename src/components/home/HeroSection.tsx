@@ -10,7 +10,7 @@ const heroPoints = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center bg-hero-gradient overflow-hidden">
+    <section className="relative xl:min-h-screen md:min-h-[110vh] sm:min-h-screen flex items-center bg-hero-gradient overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
